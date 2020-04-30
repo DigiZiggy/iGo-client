@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, Image, Alert, Switch} from 'react-native';
-import {styles} from '../styles/index.style';
+import {styles} from '../styles';
 import {Header, Icon, Button, Input} from 'react-native-elements';
 import AdminService from '../services/admin.service';
 import {Role} from '../models/role';

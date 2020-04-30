@@ -4,8 +4,8 @@ import {createAppContainer} from 'react-navigation';
 import MenuStack from './menu';
 import AdminMenuStack from './menu.admin';
 
-import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
+import LoginPage from '../views/LoginPage';
+import RegisterPage from '../views/RegisterPage';
 
 const EntryStack = createStackNavigator(
   {

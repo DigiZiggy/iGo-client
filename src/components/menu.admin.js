@@ -1,20 +1,22 @@
 import React from 'react';
-import {createStackNavigator} from 'react-navigation-stack';
-import {createDrawerNavigator} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import {createStackNavigator} from 'react-navigation-stack';
 import {Icon} from 'react-native-elements';
-import HomePage from '../pages/HomePage';
-import EventPage from '../pages/EventPage';
-import DetailPage from '../pages/DetailPage';
+
+import HomePage from '../views/HomePage';
+import AdminPage from '../views/AdminPage';
+import UserPage from '../views/UserPage';
+
 import DrawerContent from './menu.content';
 
 const ListStack = createStackNavigator(
   {
-    Event: {screen: EventPage},
-    Detail: {screen: DetailPage},
+    Admin: {screen: AdminPage},
+    User: {screen: UserPage},
   },
   {
-    initialRouteName: 'Event',
+    initialRouteName: 'Admin',
   },
 );
 
@@ -26,10 +28,10 @@ const Menu = createDrawerNavigator(
         drawerIcon: ({tintColor}) => <Icon name="home" color={tintColor} />,
       }),
     },
-    Event: {
+    Admin: {
       screen: ListStack,
       navigationOptions: ({navigation}) => ({
-        drawerIcon: ({tintColor}) => <Icon name="event" color={tintColor} />,
+        drawerIcon: ({tintColor}) => <Icon name="person" color={tintColor} />,
       }),
     },
   },
@@ -41,5 +43,5 @@ const Menu = createDrawerNavigator(
   },
 );
 
-const MenuStack = createAppContainer(Menu);
-export default MenuStack;
+const AdminMenuStack = createAppContainer(Menu);
+export default AdminMenuStack;

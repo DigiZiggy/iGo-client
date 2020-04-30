@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Image, Text} from 'react-native';
-import {styles} from '../styles/index.style';
+import {styles} from '../styles';
 import {Input, Button} from 'react-native-elements';
 import UserService from '../services/user.service';
 import User from '../models/user';

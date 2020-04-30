@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, Image} from 'react-native';
-import {styles} from '../styles/index.style';
+import {styles} from '../styles';
 import CustomHeader from '../components/header';
 import AsyncStorage from '@react-native-community/async-storage';
 import {Role} from '../models/role';
@@ -37,7 +37,7 @@ export default class HomePage extends Component {
         />
         <View style={[styles.container, styles.form]}>
           <Image
-            source={require('../imgs/react.png')}
+            source={require('../assets/images/react.png')}
             style={styles.drawerImage}
           />
           <Text>Welcome to react native app.</Text>

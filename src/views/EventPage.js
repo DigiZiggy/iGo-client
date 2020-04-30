@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, FlatList, ActivityIndicator} from 'react-native';
-import {styles} from '../styles/index.style';
+import {styles} from '../styles';
 import {ListItem} from 'react-native-elements';
 import CustomHeader from '../components/header';
 import UserService from '../services/user.service';

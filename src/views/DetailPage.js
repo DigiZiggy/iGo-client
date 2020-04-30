@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, Image} from 'react-native';
-import {styles} from '../styles/index.style';
+import {styles} from '../styles';
 import {Header, Icon, Button} from 'react-native-elements';
 import UserService from '../services/user.service';
 import EventTask from '../models/event-task';
@@ -103,7 +103,7 @@ export default class DetailPage extends Component {
           <Image
             resizeMode="cover"
             style={styles.eventLogo}
-            source={require('../imgs/product.jpg')}
+            source={require('../assets/images/product.jpg')}
           />
           <Text style={{marginBottom: 10}}>{this.state.event.description}</Text>
           <Button

@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {DrawerItems} from 'react-navigation-drawer';
 import {Text, View, ScrollView, Image} from 'react-native';
-import {styles} from '../styles/index.style';
+import {styles} from '../styles';
 
 export default class DrawerContent extends PureComponent {
   render() {
@@ -9,7 +9,7 @@ export default class DrawerContent extends PureComponent {
       <View style={styles.softContainer}>
         <View style={styles.drawerContainer}>
           <Image
-            source={require('../imgs/react.png')}
+            source={require('../assets/images/react.png')}
             style={styles.drawerImage}
           />
           <Text style={styles.drawerText}>React Native</Text>
