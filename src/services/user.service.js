@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {decode as atob, encode as btoa} from 'base-64';
 import EventEmitter from 'eventemitter3';
 
-const API_URL = 'http://172.20.10.2:8080/api/user/';
+const API_URL = 'http://172.20.10.2:8080/api/v1/';
 var currentUserSubject = new BehaviorSubject(null);
 
 const emitter = new EventEmitter();
@@ -35,52 +35,42 @@ class UserService {
       authorization: 'Basic ' + btoa(user.username + ':' + user.password),
     };
 
-    return axios.get(API_URL + 'login', {headers: headers}).then((response) => {
-      AsyncStorage.setItem('currentUser', JSON.stringify(response.data));
-      this.loginEmitter(JSON.stringify(response.data));
-      currentUserSubject.next(response.data);
-    });
+    return axios
+      .get(API_URL + 'user/login', {headers: headers})
+      .then((response) => {
+        AsyncStorage.setItem('currentUser', JSON.stringify(response.data));
+        this.loginEmitter(JSON.stringify(response.data));
+        currentUserSubject.next(response.data);
+      });
   }
 
   logOut() {
-    return axios.post(API_URL + 'logout', {}).then((_response) => {
+    return axios.post(API_URL + 'user/logout', {}).then((_response) => {
       AsyncStorage.removeItem('currentUser');
       currentUserSubject.next(null);
     });
   }
 
   register(user) {
-    return axios.post(API_URL + 'registration', JSON.stringify(user), {
+    return axios.post(API_URL + 'user/registration', JSON.stringify(user), {
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
     });
   }
 
-  createEvent(event) {
-    return axios.post(API_URL + 'event-create', JSON.stringify(event), {
-      headers: this.headers,
-    });
-  }
-
-  updateEvent(event) {
-    return axios.put(API_URL + 'event-update', JSON.stringify(event), {
-      headers: this.headers,
-    });
-  }
-
-  deleteEvent(event) {
-    return axios.post(API_URL + 'event-delete', JSON.stringify(event), {
-      headers: this.headers,
-    });
-  }
-
-  findAllEvents() {
-    return axios.get(API_URL + 'events', {
+  findAllUsers() {
+    return axios.get(API_URL + 'users', {
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
     });
   }
 
-  addTaskToEvent(eventTask) {
-    return axios.post(API_URL + 'event/addTask', JSON.stringify(eventTask), {
+  findUserById(id) {
+    return axios.get(API_URL + 'users/' + id, {
+      headers: {'Content-Type': 'application/json; charset=UTF-8'},
+    });
+  }
+
+  findAllUserEvents(id) {
+    return axios.get(API_URL + 'users/' + id + '/events', {
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
     });
   }
